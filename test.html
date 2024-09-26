@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OOXML Renderer Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OOXML Renderer Test</h1>
+  <input type="file" id="fileInput" accept=".docx" />
+  <div id="container"></div>
+
+  <!-- Include your compiled JavaScript file -->
+  <script src="dist/ooxmlRenderer.js"></script>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const container = document.getElementById('container');
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        ooxmlRenderer.renderDocument(file, container).catch(error => {
+          console.error('Error rendering document:', error);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
